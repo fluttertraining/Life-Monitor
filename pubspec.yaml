@@ -22,6 +22,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   flutter_platform_widgets: ^0.10.0
+  provider: ^2.0.1
 
 dev_dependencies:
   flutter_test:
