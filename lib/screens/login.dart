@@ -58,19 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: EdgeInsets.symmetric(horizontal: 28),
               child: ListView(
                 children: <Widget>[
-                  AnimatedContainer(
-                    curve: Curves.easeInOutExpo,
-                    duration: Duration(milliseconds: 500),
-                    alignment: _isKeyboardOpen
-                        ? Alignment.centerLeft
-                        : Alignment.center,
-                    margin: EdgeInsets.only(top: _isKeyboardOpen ? 75 : 40),
-                    height: _isKeyboardOpen ? 75 : 200,
-                    width: _isKeyboardOpen
-                        ? MediaQuery.of(context).size.width
-                        : 100,
-                    child: Image.asset('assets/images/using_phone.png'),
-                  ),
+                  new _LoginImage(isKeyboardOpen: _isKeyboardOpen),
                   SizedBox(height: 40),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,6 +97,29 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _LoginImage extends StatelessWidget {
+  const _LoginImage({
+    Key key,
+    @required bool isKeyboardOpen,
+  })  : _isKeyboardOpen = isKeyboardOpen,
+        super(key: key);
+
+  final bool _isKeyboardOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      curve: Curves.easeInOutExpo,
+      duration: Duration(milliseconds: 500),
+      alignment: _isKeyboardOpen ? Alignment.centerLeft : Alignment.center,
+      margin: EdgeInsets.only(top: _isKeyboardOpen ? 75 : 40),
+      height: _isKeyboardOpen ? 75 : 200,
+      width: _isKeyboardOpen ? MediaQuery.of(context).size.width : 100,
+      child: Image.asset('assets/images/using_phone.png'),
     );
   }
 }
