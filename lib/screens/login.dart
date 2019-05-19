@@ -1,10 +1,31 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 import 'package:budget_planner/widgets/rounded_appbar.dart';
 import 'package:budget_planner/widgets/custom_textfield.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool _isKeyboardOpen = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    KeyboardVisibilityNotification().addNewListener(
+      onChange: (bool visible) {
+        setState(() {
+          _isKeyboardOpen = visible;
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,18 +54,25 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 40),
-                  height: 200,
-                  child: Image.asset('assets/images/using_phone.png'),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 40),
-                  padding: EdgeInsets.symmetric(horizontal: 28),
-                  child: Column(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 28),
+              child: ListView(
+                children: <Widget>[
+                  AnimatedContainer(
+                    curve: Curves.easeInOutExpo,
+                    duration: Duration(milliseconds: 500),
+                    alignment: _isKeyboardOpen
+                        ? Alignment.centerLeft
+                        : Alignment.center,
+                    margin: EdgeInsets.only(top: _isKeyboardOpen ? 75 : 40),
+                    height: _isKeyboardOpen ? 75 : 200,
+                    width: _isKeyboardOpen
+                        ? MediaQuery.of(context).size.width
+                        : 100,
+                    child: Image.asset('assets/images/using_phone.png'),
+                  ),
+                  SizedBox(height: 40),
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
@@ -74,9 +102,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                       )
                     ],
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ],

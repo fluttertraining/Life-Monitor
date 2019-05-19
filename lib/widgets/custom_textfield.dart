@@ -44,6 +44,7 @@ class CustomTextField extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: Colors.grey[400],
             ),
+            style: TextStyle(fontFamily: 'GT-Walshiem-Pro'),
             obscureText: this.password,
           ),
         ],
