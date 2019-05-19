@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import 'package:budget_planner/screens/login.dart';
+import 'package:budget_planner/screens/register.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => LoginScreen(),
-        '/register': (BuildContext context) => MyHomePage(),
+        '/register': (BuildContext context) => RegisterScreen(),
       },
       theme: ThemeData(
         primaryColor: Color.fromRGBO(255, 51, 120, 1),
@@ -26,30 +26,6 @@ class MyApp extends StatelessWidget {
             fontSize: 26,
             fontWeight: FontWeight.w700,
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return PlatformScaffold(
-      appBar: PlatformAppBar(
-        title: Text('Hello'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('You have pushed the button this many times:'),
-          ],
         ),
       ),
     );

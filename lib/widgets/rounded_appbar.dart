@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RoundedAppBar extends StatelessWidget {
+  final Widget child;
+
   const RoundedAppBar({
     Key key,
+    @required this.child,
   }) : super(key: key);
 
   @override
@@ -20,18 +23,7 @@ class RoundedAppBar extends StatelessWidget {
         alignment: Alignment.center,
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 28.0, right: 28.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text('Budget Tracker', style: TextStyle(fontSize: 16)),
-            Text('Sign Up',
-                style: TextStyle(
-                  fontSize: 12.5,
-                  color: Theme.of(context).primaryColor,
-                )),
-          ],
-        ),
+        child: this.child,
       ),
     );
   }

@@ -10,12 +10,28 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromRGBO(242, 242, 242, 1),
       appBar: PreferredSize(
-          preferredSize: Size(MediaQuery.of(context).size.width, 0),
-          child: Container(color: Colors.white)),
+        preferredSize: Size(MediaQuery.of(context).size.width, 0),
+        child: Container(color: Colors.white),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new RoundedAppBar(),
+          new RoundedAppBar(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text('Budget Tracker', style: TextStyle(fontSize: 16)),
+                Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView(
               children: <Widget>[
