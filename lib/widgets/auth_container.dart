@@ -48,11 +48,16 @@ class _AuthContainerState extends State<AuthContainer> {
                 Text('Budget Tracker', style: TextStyle(fontSize: 16)),
                 GestureDetector(
                   onTap: widget.onTapHeaderAction,
-                  child: Text(
-                    widget.isLogin ? 'Sign Up' : 'Login',
-                    style: TextStyle(
-                      fontSize: 12.5,
-                      color: Theme.of(context).primaryColor,
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    alignment: Alignment.center,
+                    child: Text(
+                      widget.isLogin ? 'Sign Up' : 'Login',
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
                 )
@@ -65,7 +70,8 @@ class _AuthContainerState extends State<AuthContainer> {
               child: ListView(
                 children: <Widget>[
                   new ZoomInOutImage(
-                      assetName: 'assets/images/using_phone.png'),
+                    assetName: 'assets/images/using_phone.png',
+                  ),
                   SizedBox(height: 40),
                   widget.child,
                   Container(
