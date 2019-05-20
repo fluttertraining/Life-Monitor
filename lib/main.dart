@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:budget_planner/screens/add_bank.dart';
@@ -13,11 +14,30 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => LoginScreen(),
-        '/register': (BuildContext context) => RegisterScreen(),
-        '/add-bank': (BuildContext context) => AddBankScreen(),
-        '/add-bank-success': (BuildContext context) => AddBankSuccessScreen(),
+      // routes: {
+      //   '/': (BuildContext context) => LoginScreen(),
+      //   '/register': (BuildContext context) => RegisterScreen(),
+      //   '/add-bank': (BuildContext context) => AddBankScreen(),
+      //   '/add-bank-success': (BuildContext context) => AddBankSuccessScreen(),
+      // },
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return CupertinoPageRoute(
+                builder: (_) => LoginScreen(), settings: settings);
+          case '/register':
+            return CupertinoPageRoute(
+                builder: (_) => RegisterScreen(), settings: settings);
+          case '/add-bank':
+            return CupertinoPageRoute(
+                builder: (_) => AddBankScreen(), settings: settings);
+          case '/add-bank-success':
+            return CupertinoPageRoute(
+              builder: (_) => AddBankSuccessScreen(),
+              settings: settings,
+              fullscreenDialog: true,
+            );
+        }
       },
       theme: ThemeData(
         primaryColor: Color.fromRGBO(255, 51, 120, 1),
