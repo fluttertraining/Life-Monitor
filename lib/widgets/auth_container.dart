@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
+
 
 import 'package:budget_planner/widgets/rounded_appbar.dart';
+import 'package:budget_planner/widgets/zoom_in_out_image.dart';
 
 class AuthContainer extends StatefulWidget {
   final Widget child;
@@ -21,20 +22,6 @@ class AuthContainer extends StatefulWidget {
 }
 
 class _AuthContainerState extends State<AuthContainer> {
-  bool _isKeyboardOpen = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    KeyboardVisibilityNotification().addNewListener(
-      onChange: (bool visible) {
-        setState(() {
-          _isKeyboardOpen = visible;
-        });
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +58,7 @@ class _AuthContainerState extends State<AuthContainer> {
               padding: EdgeInsets.symmetric(horizontal: 28),
               child: ListView(
                 children: <Widget>[
-                  new _LoginImage(isKeyboardOpen: _isKeyboardOpen),
+                  new ZoomInOutImage(assetName: 'assets/images/using_phone.png'),
                   SizedBox(height: 40),
                   widget.child,
                   Container(
@@ -100,29 +87,6 @@ class _AuthContainerState extends State<AuthContainer> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _LoginImage extends StatelessWidget {
-  const _LoginImage({
-    Key key,
-    @required bool isKeyboardOpen,
-  })  : _isKeyboardOpen = isKeyboardOpen,
-        super(key: key);
-
-  final bool _isKeyboardOpen;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      curve: Curves.easeInOutExpo,
-      duration: Duration(milliseconds: 500),
-      alignment: _isKeyboardOpen ? Alignment.centerLeft : Alignment.center,
-      margin: EdgeInsets.only(top: _isKeyboardOpen ? 75 : 40),
-      height: _isKeyboardOpen ? 75 : 200,
-      width: _isKeyboardOpen ? MediaQuery.of(context).size.width : 100,
-      child: Image.asset('assets/images/using_phone.png'),
     );
   }
 }
