@@ -54,7 +54,7 @@ class _ZoomInOutImageState extends State<ZoomInOutImage> {
       curve: Curves.easeInOutExpo,
       duration: Duration(milliseconds: 500),
       alignment: _isKeyboardOpen ? Alignment.centerLeft : Alignment.center,
-      margin: EdgeInsets.only(top: _isKeyboardOpen ? 75 : 40),
+      margin: EdgeInsets.only(top: 40),
       height: _isKeyboardOpen ? 75 : _height,
       width: _isKeyboardOpen ? _width : 100,
       child: Image.asset(
