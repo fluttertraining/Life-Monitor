@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:budget_planner/widgets/custom_button.dart';
+
 class AddBankSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,10 @@ class AddBankSuccessScreen extends StatelessWidget {
                     filterQuality: FilterQuality.high,
                   ),
                   SizedBox(height: 40),
-                  Text('Congratulations!',
-                      style: Theme.of(context).textTheme.title),
+                  Text(
+                    'Congratulations!',
+                    style: Theme.of(context).textTheme.title,
+                  ),
                   SizedBox(height: 20),
                   Container(
                     width: MediaQuery.of(context).size.width * .8,
@@ -33,22 +37,11 @@ class AddBankSuccessScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 40),
-                  Container(
+                  CustomButton(
+                    text: 'Get Started',
                     width: MediaQuery.of(context).size.width * .8,
                     height: 60,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Get Started!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
+                    onTap: () {},
                   )
                 ],
               ),
