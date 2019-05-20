@@ -10,15 +10,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  _navigateToRegisterScreen() {
-    Navigator.of(context).pushReplacementNamed('/register');
+  void _navigateToScreen(String name) {
+    Navigator.of(context).pushNamed(name);
   }
 
   @override
   Widget build(BuildContext context) {
     return AuthContainer(
       isLogin: true,
-      onTapHeaderAction: _navigateToRegisterScreen,
+      onTapHeaderAction: () => _navigateToScreen('/register'),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -28,7 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
             textAlign: TextAlign.start,
           ),
           SizedBox(height: 20),
-          new _LoginForm(),
+          new _LoginForm(
+            onTapSubmit: () => _navigateToScreen('/add-bank'),
+          ),
         ],
       ),
     );
@@ -36,8 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class _LoginForm extends StatelessWidget {
+  final Function onTapSubmit;
+
   const _LoginForm({
     Key key,
+    @required this.onTapSubmit,
   }) : super(key: key);
 
   @override
@@ -59,19 +64,22 @@ class _LoginForm extends StatelessWidget {
                 password: true,
               ),
               SizedBox(width: 40),
-              Container(
-                height: 45,
-                width: 45,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(12.0),
+              GestureDetector(
+                onTap: onTapSubmit,
+                child: Container(
+                  height: 45,
+                  width: 45,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Icon(
+                    Icons.keyboard_arrow_right,
+                    color: Colors.white,
+                    size: 36,
+                  ),
                 ),
-                child: Icon(
-                  Icons.keyboard_arrow_right,
-                  color: Colors.white,
-                  size: 36,
-                ),
-              ),
+              )
             ],
           )
         ],

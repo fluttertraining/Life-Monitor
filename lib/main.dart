@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:budget_planner/screens/add_bank.dart';
 import 'package:budget_planner/screens/login.dart';
 import 'package:budget_planner/screens/register.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (BuildContext context) => LoginScreen(),
         '/register': (BuildContext context) => RegisterScreen(),
+        '/add-bank': (BuildContext context) => AddBankScreen(),
       },
       theme: ThemeData(
         primaryColor: Color.fromRGBO(255, 51, 120, 1),

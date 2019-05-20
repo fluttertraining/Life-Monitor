@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 class RoundedAppBar extends StatelessWidget {
   final Widget child;
+  final EdgeInsetsGeometry padding;
+  final double height;
 
   const RoundedAppBar({
     Key key,
     @required this.child,
+    this.padding,
+    this.height,
   }) : super(key: key);
 
   @override
@@ -19,10 +23,12 @@ class RoundedAppBar extends StatelessWidget {
         bottomRight: Radius.circular(20.0),
       ),
       child: Container(
-        height: 75,
+        height: height != null ? height : 75,
         alignment: Alignment.center,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 28.0, right: 28.0),
+        padding: padding != null
+            ? padding
+            : EdgeInsets.only(left: 28.0, right: 28.0),
         child: this.child,
       ),
     );
