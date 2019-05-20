@@ -11,15 +11,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  void _navigateToScreen(String name) {
-    Navigator.of(context).pushNamed(name);
-  }
-
   @override
   Widget build(BuildContext context) {
     return AuthContainer(
       isLogin: true,
-      onTapHeaderAction: () => _navigateToScreen('/register'),
+      onTapHeaderAction: () {
+        Navigator.of(context).pushReplacementNamed('/register');
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -30,7 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           SizedBox(height: 20),
           new _LoginForm(
-            onTapSubmit: () => _navigateToScreen('/add-bank'),
+            onTapSubmit: () {
+              Navigator.of(context).pushNamed('/add-bank');
+            },
           ),
         ],
       ),

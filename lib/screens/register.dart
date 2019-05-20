@@ -7,12 +7,11 @@ import 'package:budget_planner/widgets/custom_textfield.dart';
 class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    void _navigateToRegisterScreen() {
-      Navigator.of(context).pushReplacementNamed('/');
-    }
 
     return AuthContainer(
-      onTapHeaderAction: _navigateToRegisterScreen,
+      onTapHeaderAction: () {
+      Navigator.of(context).pushReplacementNamed('/');
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
