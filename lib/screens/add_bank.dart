@@ -54,7 +54,11 @@ class _AddBankScreenState extends State<AddBankScreen> {
                       style: Theme.of(context).textTheme.title,
                     ),
                   ),
-                  new _AddBankForm(),
+                  new _AddBankForm(
+                    onSubmit: () {
+                      Navigator.of(context).pushNamed('/add-bank-success');
+                    },
+                  ),
                 ],
               ),
             ),
@@ -104,14 +108,17 @@ class _AddBankImage extends StatelessWidget {
 class _AddBankForm extends StatelessWidget {
   const _AddBankForm({
     Key key,
+    @required this.onSubmit,
   }) : super(key: key);
+
+  final Function onSubmit;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 115,
       child: CustomForm(
-        onPressed: () {},
+        onPressed: this.onSubmit,
         textFields: <Widget>[
           new CustomTextField(
             placeholder: 'Account name here',
