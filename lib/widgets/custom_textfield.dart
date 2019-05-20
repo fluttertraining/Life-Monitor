@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String placeholder;
-  final String label;
-  final bool password;
-  final TextInputType keyboardType;
-
   const CustomTextField({
     Key key,
     @required this.placeholder,
@@ -14,6 +9,11 @@ class CustomTextField extends StatelessWidget {
     this.password = false,
     this.keyboardType,
   }) : super(key: key);
+
+  final String placeholder;
+  final String label;
+  final bool password;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,11 @@ class CustomTextField extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: Colors.grey[400],
             ),
-            style: TextStyle(fontFamily: 'GT-Walshiem-Pro'),
+            style: TextStyle(
+              fontFamily: 'GT-Walshiem-Pro',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
             obscureText: this.password,
             keyboardType: this.keyboardType,
           ),

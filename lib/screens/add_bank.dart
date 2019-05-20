@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 import 'package:budget_planner/widgets/custom_textfield.dart';
 import 'package:budget_planner/widgets/custom_form.dart';
 import 'package:budget_planner/widgets/rounded_appbar.dart';
 import 'package:budget_planner/widgets/zoom_in_out_image.dart';
-import 'package:flutter/services.dart';
 
-class AddBankScreen extends StatelessWidget {
+class AddBankScreen extends StatefulWidget {
+  @override
+  _AddBankScreenState createState() => _AddBankScreenState();
+}
+
+class _AddBankScreenState extends State<AddBankScreen> {
+  bool _isKeyboardOpen = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    KeyboardVisibilityNotification().addNewListener(
+      onChange: (bool visible) {
+        setState(() {
+          _isKeyboardOpen = visible;
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +39,12 @@ class AddBankScreen extends StatelessWidget {
           new _AppBar(),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 32),
+              padding: EdgeInsets.only(left: 32, right: 32),
               child: ListView(
                 children: <Widget>[
                   ZoomInOutImage(
-                    assetName: 'assets/images/bank.png',
                     height: 175,
+                    child: new _AddBankImage(isKeyboardOpen: _isKeyboardOpen),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 50, bottom: 50),
@@ -41,6 +61,42 @@ class AddBankScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class _AddBankImage extends StatelessWidget {
+  const _AddBankImage({
+    Key key,
+    @required bool isKeyboardOpen,
+  })  : _isKeyboardOpen = isKeyboardOpen,
+        super(key: key);
+
+  final bool _isKeyboardOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      overflow: Overflow.visible,
+      children: <Widget>[
+        Image.asset(
+          'assets/images/bank.png',
+          height: 200,
+          filterQuality: FilterQuality.high,
+        ),
+        AnimatedPositioned(
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOutExpo,
+          top: _isKeyboardOpen ? -10 : -25,
+          right: _isKeyboardOpen ? -25 : -50,
+          child: Image.asset(
+            'assets/images/add_circle.png',
+            height: _isKeyboardOpen ? 50 : 115,
+            width: _isKeyboardOpen ? 50 : 115,
+            filterQuality: FilterQuality.high,
+          ),
+        )
+      ],
     );
   }
 }
@@ -88,7 +144,7 @@ class _AppBar extends StatelessWidget {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.arrow_back),
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).pop(),
               ),
               SizedBox(width: 10),
               Text(

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomForm extends StatelessWidget {
-  final List<Widget> textFields;
-  final Function onPressed;
-
+  /// A widget that transforms a list of renders the list
+  /// of [textFields] but the last textField gets wrapped in a
+  /// a row with a button
   CustomForm({
     Key key,
     @required this.textFields,
     @required this.onPressed,
   }) : super(key: key);
+
+  final List<Widget> textFields;
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {

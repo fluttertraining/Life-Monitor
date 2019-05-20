@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 import 'package:budget_planner/widgets/rounded_appbar.dart';
 import 'package:budget_planner/widgets/zoom_in_out_image.dart';
 
 class AuthContainer extends StatefulWidget {
-  final Widget child;
-  final bool isLogin;
-  final Function onTapHeaderAction;
-
+  /// A widget that wraps the [LoginScreen] and [RegisterScreen]
+  /// The [child] usually contains the text and form elements
   AuthContainer({
     Key key,
     @required this.child,
@@ -17,12 +14,21 @@ class AuthContainer extends StatefulWidget {
     this.isLogin = false,
   });
 
+  /// Should have a list of [CustomTextField] with a wrapper component such as
+  /// a [SizedBox] or [Container]
+  final Widget child;
+
+  /// Determines the if the facebook button and header
+  /// should say signup / sign in
+  final bool isLogin;
+
+  final Function onTapHeaderAction;
+
   @override
   _AuthContainerState createState() => _AuthContainerState();
 }
 
 class _AuthContainerState extends State<AuthContainer> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +64,8 @@ class _AuthContainerState extends State<AuthContainer> {
               padding: EdgeInsets.symmetric(horizontal: 28),
               child: ListView(
                 children: <Widget>[
-                  new ZoomInOutImage(assetName: 'assets/images/using_phone.png'),
+                  new ZoomInOutImage(
+                      assetName: 'assets/images/using_phone.png'),
                   SizedBox(height: 40),
                   widget.child,
                   Container(
