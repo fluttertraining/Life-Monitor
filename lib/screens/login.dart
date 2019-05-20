@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:budget_planner/widgets/auth_container.dart';
+import 'package:budget_planner/widgets/custom_form.dart';
 import 'package:budget_planner/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -49,39 +50,18 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 110,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
+      child: CustomForm(
+        onPressed: onTapSubmit,
+        textFields: <Widget>[
           new CustomTextField(
             placeholder: 'name@domain.com',
             label: 'Email',
           ),
-          Row(
-            children: <Widget>[
-              new CustomTextField(
-                placeholder: '************',
-                label: 'Password',
-                password: true,
-              ),
-              SizedBox(width: 40),
-              GestureDetector(
-                onTap: onTapSubmit,
-                child: Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: Icon(
-                    Icons.keyboard_arrow_right,
-                    color: Colors.white,
-                    size: 36,
-                  ),
-                ),
-              )
-            ],
-          )
+          new CustomTextField(
+            placeholder: '************',
+            label: 'Password',
+            password: true,
+          ),
         ],
       ),
     );

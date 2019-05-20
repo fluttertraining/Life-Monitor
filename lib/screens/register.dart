@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:budget_planner/widgets/auth_container.dart';
+import 'package:budget_planner/widgets/custom_form.dart';
 import 'package:budget_planner/widgets/custom_textfield.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -33,6 +34,7 @@ class RegisterScreen extends StatelessWidget {
 }
 
 class _RegisterForm extends StatelessWidget {
+  
   const _RegisterForm({
     Key key,
   }) : super(key: key);
@@ -40,43 +42,24 @@ class _RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          new CustomTextField(
-            placeholder: 'Your name',
-            label: 'Your name',
-          ),
-          new CustomTextField(
-            placeholder: 'name@domain.com',
-            label: 'Email',
-          ),
-          Row(
-            children: <Widget>[
-              new CustomTextField(
-                placeholder: '************',
-                label: 'Password',
-                password: true,
-              ),
-              SizedBox(width: 40),
-              Container(
-                height: 45,
-                width: 45,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Icon(
-                  Icons.keyboard_arrow_right,
-                  color: Colors.white,
-                  size: 36,
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
+        height: 200,
+        child: CustomForm(
+          onPressed: ,
+          textFields: [
+            new CustomTextField(
+              placeholder: 'Your name',
+              label: 'Your name',
+            ),
+            new CustomTextField(
+              placeholder: 'name@domain.com',
+              label: 'Email',
+            ),
+            new CustomTextField(
+              placeholder: '************',
+              label: 'Password',
+              password: true,
+            ),
+          ],
+        ));
   }
 }
