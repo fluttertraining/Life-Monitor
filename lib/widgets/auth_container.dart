@@ -6,10 +6,14 @@ import 'package:budget_planner/widgets/rounded_appbar.dart';
 
 class AuthContainer extends StatefulWidget {
   final Widget child;
+  final bool isLogin;
+  final Function onTapHeaderAction;
 
   AuthContainer({
     Key key,
     @required this.child,
+    @required this.onTapHeaderAction,
+    this.isLogin = false,
   });
 
   @override
@@ -49,13 +53,16 @@ class _AuthContainerState extends State<AuthContainer> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text('Budget Tracker', style: TextStyle(fontSize: 16)),
-                Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontSize: 12.5,
-                    color: Theme.of(context).primaryColor,
+                GestureDetector(
+                  onTap: widget.onTapHeaderAction,
+                  child: Text(
+                    widget.isLogin ? 'Sign Up' : 'Login',
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -69,7 +76,8 @@ class _AuthContainerState extends State<AuthContainer> {
                   widget.child,
                   Container(
                     margin: EdgeInsets.only(top: 25),
-                    height: 140,
+                    padding: EdgeInsets.only(bottom: 40),
+                    height: 160,
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,7 +89,7 @@ class _AuthContainerState extends State<AuthContainer> {
                             fontWeight: FontWeight.w300,
                           ),
                         ),
-                        new _FacebookButton(),
+                        new _FacebookButton(isLogin: widget.isLogin),
                         Text('Forgot Password?')
                       ],
                     ),
@@ -120,9 +128,9 @@ class _LoginImage extends StatelessWidget {
 }
 
 class _FacebookButton extends StatelessWidget {
-  const _FacebookButton({
-    Key key,
-  }) : super(key: key);
+  final bool isLogin;
+
+  const _FacebookButton({Key key, this.isLogin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +154,7 @@ class _FacebookButton extends StatelessWidget {
             child: Image.asset('assets/icons/fb.png'),
           ),
           Text(
-            'Login with facebook',
+            this.isLogin ? 'Login with facebook' : 'Signup with facebook',
             style: TextStyle(
               color: Color.fromRGBO(59, 89, 152, 1.0),
               fontWeight: FontWeight.w500,

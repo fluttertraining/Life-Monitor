@@ -10,9 +10,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  _navigateToRegisterScreen() {
+    Navigator.of(context).pushReplacementNamed('/register');
+  }
+
   @override
   Widget build(BuildContext context) {
     return AuthContainer(
+      isLogin: true,
+      onTapHeaderAction: _navigateToRegisterScreen,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -38,39 +44,37 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 110,
-      child: Form(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            new CustomTextField(
-              placeholder: 'name@domain.com',
-              label: 'Email',
-            ),
-            Row(
-              children: <Widget>[
-                new CustomTextField(
-                  placeholder: '************',
-                  label: 'Password',
-                  password: true,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new CustomTextField(
+            placeholder: 'name@domain.com',
+            label: 'Email',
+          ),
+          Row(
+            children: <Widget>[
+              new CustomTextField(
+                placeholder: '************',
+                label: 'Password',
+                password: true,
+              ),
+              SizedBox(width: 40),
+              Container(
+                height: 45,
+                width: 45,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(12.0),
                 ),
-                SizedBox(width: 40),
-                Container(
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: Icon(
-                    Icons.keyboard_arrow_right,
-                    color: Colors.white,
-                    size: 36,
-                  ),
+                child: Icon(
+                  Icons.keyboard_arrow_right,
+                  color: Colors.white,
+                  size: 36,
                 ),
-              ],
-            )
-          ],
-        ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
