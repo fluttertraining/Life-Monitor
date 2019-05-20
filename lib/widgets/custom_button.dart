@@ -5,16 +5,16 @@ class CustomButton extends StatelessWidget {
   /// look like
   CustomButton({
     Key key,
-    @required this.text,
     @required this.onTap,
     @required this.width,
     @required this.height,
+    @required this.child,
   }) : super(key: key);
 
-  final String text;
   final Function onTap;
   final double height;
   final double width;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,7 @@ class CustomButton extends StatelessWidget {
           width: this.width,
           height: this.height,
           child: Center(
-            child: Text(
-              this.text,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
+            child: this.child,
           ),
         ),
       ),

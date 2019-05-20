@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:budget_planner/widgets/custom_button.dart';
+
 class CustomForm extends StatelessWidget {
   /// A widget that transforms a list of renders the list
-  /// of [textFields] but the last textField gets wrapped in a
+  /// of [CustomTextField] but the last textField gets wrapped in a
   /// a row with a button
   CustomForm({
     Key key,
@@ -24,22 +26,16 @@ class CustomForm extends StatelessWidget {
           children: <Widget>[
             lastTextField,
             SizedBox(width: 40),
-            GestureDetector(
+            CustomButton(
               onTap: this.onPressed,
-              child: Container(
-                height: 45,
-                width: 45,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Icon(
-                  Icons.keyboard_arrow_right,
-                  color: Colors.white,
-                  size: 36,
-                ),
+              height: 45,
+              width: 45,
+              child: Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.white,
+                size: 36,
               ),
-            )
+            ),
           ],
         )
       ],

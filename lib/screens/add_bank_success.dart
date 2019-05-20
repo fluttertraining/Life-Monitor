@@ -38,7 +38,13 @@ class AddBankSuccessScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 40),
                   CustomButton(
-                    text: 'Get Started',
+                    child: Text(
+                      'Get Started',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
                     width: MediaQuery.of(context).size.width * .8,
                     height: 60,
                     onTap: () {},
