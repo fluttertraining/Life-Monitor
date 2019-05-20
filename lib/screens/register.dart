@@ -34,7 +34,6 @@ class RegisterScreen extends StatelessWidget {
 }
 
 class _RegisterForm extends StatelessWidget {
-  
   const _RegisterForm({
     Key key,
   }) : super(key: key);
@@ -44,7 +43,7 @@ class _RegisterForm extends StatelessWidget {
     return Container(
         height: 200,
         child: CustomForm(
-          onPressed: ,
+          onPressed: () {},
           textFields: [
             new CustomTextField(
               placeholder: 'Your name',

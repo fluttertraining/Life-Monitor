@@ -5,12 +5,14 @@ class CustomTextField extends StatelessWidget {
   final String placeholder;
   final String label;
   final bool password;
+  final TextInputType keyboardType;
 
   const CustomTextField({
     Key key,
     @required this.placeholder,
     @required this.label,
     this.password = false,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -46,6 +48,7 @@ class CustomTextField extends StatelessWidget {
             ),
             style: TextStyle(fontFamily: 'GT-Walshiem-Pro'),
             obscureText: this.password,
+            keyboardType: this.keyboardType,
           ),
         ],
       ),

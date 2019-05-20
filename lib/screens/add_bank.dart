@@ -4,6 +4,7 @@ import 'package:budget_planner/widgets/custom_textfield.dart';
 import 'package:budget_planner/widgets/custom_form.dart';
 import 'package:budget_planner/widgets/rounded_appbar.dart';
 import 'package:budget_planner/widgets/zoom_in_out_image.dart';
+import 'package:flutter/services.dart';
 
 class AddBankScreen extends StatelessWidget {
   @override
@@ -18,12 +19,20 @@ class AddBankScreen extends StatelessWidget {
           new _AppBar(),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 28),
+              padding: EdgeInsets.symmetric(horizontal: 32),
               child: ListView(
                 children: <Widget>[
                   ZoomInOutImage(
                     assetName: 'assets/images/bank.png',
                     height: 175,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 50, bottom: 50),
+                    padding: EdgeInsets.only(right: 25),
+                    child: Text(
+                      'Add primary bank account',
+                      style: Theme.of(context).textTheme.title,
+                    ),
                   ),
                   new _AddBankForm(),
                 ],
@@ -55,6 +64,7 @@ class _AddBankForm extends StatelessWidget {
           new CustomTextField(
             placeholder: '\$0,000',
             label: 'Starter Amount',
+            keyboardType: TextInputType.number,
           ),
         ],
       ),
