@@ -7,10 +7,9 @@ import 'package:budget_planner/widgets/custom_textfield.dart';
 class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return AuthContainer(
       onTapHeaderAction: () {
-      Navigator.of(context).pushReplacementNamed('/');
+        Navigator.of(context).pushReplacementNamed('/');
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,24 +39,25 @@ class _RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 200,
-        child: CustomForm(
-          onPressed: () {},
-          textFields: [
-            new CustomTextField(
-              placeholder: 'Your name',
-              label: 'Your name',
-            ),
-            new CustomTextField(
-              placeholder: 'name@domain.com',
-              label: 'Email',
-            ),
-            new CustomTextField(
-              placeholder: '************',
-              label: 'Password',
-              password: true,
-            ),
-          ],
-        ));
+      height: 200,
+      child: CustomForm(
+        onPressed: () {},
+        textFields: [
+          new CustomTextField(
+            placeholder: 'Your name',
+            label: 'Your name',
+          ),
+          new CustomTextField(
+            placeholder: 'name@domain.com',
+            label: 'Email',
+          ),
+          new CustomTextField(
+            placeholder: '************',
+            label: 'Password',
+            password: true,
+          ),
+        ],
+      ),
+    );
   }
 }

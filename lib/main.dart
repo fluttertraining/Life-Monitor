@@ -14,12 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
-      // routes: {
-      //   '/': (BuildContext context) => LoginScreen(),
-      //   '/register': (BuildContext context) => RegisterScreen(),
-      //   '/add-bank': (BuildContext context) => AddBankScreen(),
-      //   '/add-bank-success': (BuildContext context) => AddBankSuccessScreen(),
-      // },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
