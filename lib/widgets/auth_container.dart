@@ -14,13 +14,11 @@ class AuthContainer extends StatefulWidget {
     this.isLogin = false,
   });
 
-  /// Should have a list of [CustomTextField] with a wrapper component such as
-  /// a [SizedBox] or [Container]
-  final Widget child;
-
   /// Determines the if the facebook button and header
   /// should say signup / sign in
   final bool isLogin;
+
+  final Widget child;
 
   final Function onTapHeaderAction;
 

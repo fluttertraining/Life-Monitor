@@ -29,7 +29,7 @@ class _ZoomInOutImageState extends State<ZoomInOutImage> {
     super.initState();
 
     if (widget.assetName != null && widget.child != null) {
-      throw "[assetName] and [child] cannot coexist!";
+      throw Exception("[assetName] and [child] cannot coexist!");
     }
 
     KeyboardVisibilityNotification().addNewListener(
