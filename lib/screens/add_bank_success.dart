@@ -46,7 +46,7 @@ class AddBankSuccessScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * .8,
               height: 60,
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pushReplacementNamed('/main-screen');
               },
             ),
           ],

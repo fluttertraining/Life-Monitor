@@ -6,7 +6,7 @@ PODS:
   - Reachability (3.2)
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios-release`)
+  - Flutter (from `.symlinks/flutter/ios`)
   - keyboard_visibility (from `.symlinks/plugins/keyboard_visibility/ios`)
 
 SPEC REPOS:
@@ -15,7 +15,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios-release"
+    :path: ".symlinks/flutter/ios"
   keyboard_visibility:
     :path: ".symlinks/plugins/keyboard_visibility/ios"
 
