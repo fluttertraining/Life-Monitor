@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:budget_planner/screens/add_bank.dart';
 import 'package:budget_planner/screens/add_bank_success.dart';
-import 'package:budget_planner/screens/login.dart';
 import 'package:budget_planner/screens/budget.dart';
+import 'package:budget_planner/screens/login.dart';
 import 'package:budget_planner/screens/register.dart';
+
+import 'package:budget_planner/screens/budget/add_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,6 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
+      onUnknownRoute: (any) {
+        print('in the inital [onUnknowRoute]');
+      },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
@@ -36,6 +41,13 @@ class MyApp extends StatelessWidget {
             return CupertinoPageRoute(
               builder: (_) => BudgetScreen(),
               settings: settings,
+            );
+
+          case '/add-transaction':
+            return CupertinoPageRoute(
+              builder: (_) => AddTransactionScreen(),
+              settings: settings,
+              fullscreenDialog: true,
             );
         }
       },

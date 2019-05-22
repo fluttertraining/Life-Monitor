@@ -12,11 +12,14 @@ class DailyTransactionsScreen extends StatefulWidget {
 
 class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
   DateTime _currentDate;
+  int _day;
   bool _isSelecting = false;
+  bool keepAlive = true;
 
   void _onDayPressed(DateTime date, _) {
     this.setState(() {
       _currentDate = date;
+      _day = date.day;
       _isSelecting = true;
     });
   }
@@ -25,6 +28,12 @@ class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
     this.setState(() {
       _isSelecting = !_isSelecting;
     });
+  }
+
+  @override
+  void dispose() {
+    print('disposed?');
+    super.dispose();
   }
 
   @override
@@ -94,7 +103,7 @@ class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 28),
                 margin: EdgeInsets.only(bottom: 24),
-                child: true
+                child: _day == 23
                     ? new _TransactionList()
                     : new _EmptyState(isSelecting: _isSelecting),
               ),
@@ -132,68 +141,76 @@ class _TransactionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 20),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Image.asset(
-            'assets/images/pill.png',
-            height: 50,
-            filterQuality: FilterQuality.high,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(width: 15),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints size) {
-                return Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).pushNamed('/transaction-summary');
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Image.asset(
+                'assets/images/pill.png',
+                height: 50,
+                filterQuality: FilterQuality.high,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(width: 15),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints size) {
+                    return Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                'Paper Bags',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "\$340.40",
+                                style: TextStyle(
+                                  color: Color.fromRGBO(25, 234, 37, 1),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 7.5),
                           Text(
-                            'Paper Bags',
+                            'Fri 10AM',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
+                              color: Colors.grey[500],
                             ),
                           ),
-                          Text(
-                            "\$340.40",
-                            style: TextStyle(
-                              color: Color.fromRGBO(25, 234, 37, 1),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
+                          Container(
+                            padding: EdgeInsets.only(bottom: 15),
+                            width: size.maxWidth,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: Colors.grey[300],
+                                ),
+                              ),
                             ),
-                          ),
+                          )
                         ],
                       ),
-                      SizedBox(height: 7.5),
-                      Text(
-                        'Fri 10AM',
-                        style: TextStyle(
-                          color: Colors.grey[500],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(bottom: 15),
-                        width: size.maxWidth,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.grey[300],
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
