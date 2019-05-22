@@ -30,7 +30,6 @@ class _AuthContainerState extends State<AuthContainer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(242, 242, 242, 1),
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 0),
         child: Container(color: Colors.white),

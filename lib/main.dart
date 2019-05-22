@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color.fromRGBO(255, 51, 120, 1),
         fontFamily: 'GT-Walshiem-Pro',
+        scaffoldBackgroundColor: Color.fromRGBO(242, 242, 242, 1),
         textTheme: TextTheme(
           subtitle: TextStyle(
             fontSize: 12,
