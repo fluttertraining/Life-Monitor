@@ -47,7 +47,7 @@ class AddBankSuccessScreen extends StatelessWidget {
               height: 60,
               onTap: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/main-screen',
+                  '/budget-screen',
                   (Route<dynamic> route) => false,
                 );
               },

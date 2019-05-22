@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatefulWidget {
+import './budget/daily_transactions.dart';
+
+class BudgetScreen extends StatefulWidget {
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _BudgetScreenState createState() => _BudgetScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _BudgetScreenState extends State<BudgetScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    if (index != 2) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Hello'),
+        child: DailyTransactionsScreen(),
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 0,

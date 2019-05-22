@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:budget_planner/screens/add_bank.dart';
 import 'package:budget_planner/screens/add_bank_success.dart';
 import 'package:budget_planner/screens/login.dart';
-import 'package:budget_planner/screens/main.dart';
+import 'package:budget_planner/screens/budget.dart';
 import 'package:budget_planner/screens/register.dart';
 
 void main() => runApp(MyApp());
@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
               settings: settings,
               fullscreenDialog: true,
             );
-          case '/main-screen':
+          case '/budget-screen':
             return CupertinoPageRoute(
-              builder: (_) => MainScreen(),
+              builder: (_) => BudgetScreen(),
               settings: settings,
             );
         }
