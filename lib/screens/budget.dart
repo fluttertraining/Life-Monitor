@@ -10,6 +10,13 @@ class BudgetScreen extends StatefulWidget {
 class _BudgetScreenState extends State<BudgetScreen> {
   int _selectedIndex = 0;
 
+  List<Widget> _budgetScreens = <Widget>[
+    DailyTransactionsScreen(),
+    Text('Screen'),
+    Text('Screen'),
+    Text('Screen'),
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -19,9 +26,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: DailyTransactionsScreen(),
-      ),
+      body: _budgetScreens.elementAt(_selectedIndex),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
