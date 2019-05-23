@@ -96,7 +96,6 @@ class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 28),
-                margin: EdgeInsets.only(bottom: 24),
                 child: _day == 23
                     ? new _TransactionList()
                     : new _EmptyState(isSelecting: _isSelecting),
