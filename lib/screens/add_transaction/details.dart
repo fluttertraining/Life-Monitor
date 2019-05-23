@@ -18,6 +18,7 @@ class TransactionDetails extends StatefulWidget {
 
 class _TransactionDetailsState extends State<TransactionDetails> {
   FocusNode focusNode;
+  bool hasBeenFocused = false;
 
   @override
   void initState() {
@@ -39,7 +40,13 @@ class _TransactionDetailsState extends State<TransactionDetails> {
     IconData icon;
     Color iconColor;
 
-    FocusScope.of(context).requestFocus(this.focusNode);
+    if (!hasBeenFocused) {
+      FocusScope.of(context).requestFocus(focusNode);
+
+      setState(() {
+        hasBeenFocused = true;
+      });
+    }
 
     if (this.widget.transactionType == TransactionTypes.Expense) {
       type = 'Expense';

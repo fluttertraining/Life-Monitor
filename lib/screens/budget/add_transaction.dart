@@ -12,7 +12,6 @@ class AddTransactionScreen extends StatefulWidget {
 
 class _AddTransactionScreenState extends State<AddTransactionScreen> {
   TransactionTypes transactionType;
-  List<Widget> pages = [];
 
   void _onTransactionTypePressed(TransactionTypes selectedType) {
     _pageController.animateToPage(
@@ -30,15 +29,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   @override
   void initState() {
     super.initState();
-
-    this.pages = [
-      new TransactionType(
-        onTransactionTypePressed: this._onTransactionTypePressed,
-      ),
-      new TransactionDetails(
-        transactionType: this.transactionType,
-      ),
-    ];
   }
 
   final _pageController = PageController(
@@ -59,13 +49,19 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: PageView.builder(
+                child: PageView(
                   physics: transactionType == null
                       ? NeverScrollableScrollPhysics()
                       : null,
                   controller: _pageController,
-                  itemBuilder: (_, ndx) => pages[ndx],
-                  itemCount: pages.length,
+                  children: <Widget>[
+                    new TransactionType(
+                      onTransactionTypePressed: this._onTransactionTypePressed,
+                    ),
+                    new TransactionDetails(
+                      transactionType: this.transactionType,
+                    ),
+                  ],
                 ),
               ),
             )
