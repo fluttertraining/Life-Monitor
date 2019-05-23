@@ -13,7 +13,7 @@ class DailyTransactionsScreen extends StatefulWidget {
 class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
   DateTime _currentDate;
   int _day;
-  bool _isSelecting = false;
+  bool isSelecting = false;
 
   void _onDayPressed(DateTime date, _) {
     this.setState(() {
@@ -213,16 +213,15 @@ class _TransactionItem extends StatelessWidget {
 class _EmptyState extends StatelessWidget {
   const _EmptyState({
     Key key,
-    @required bool isSelecting,
-  })  : _isSelecting = isSelecting,
-        super(key: key);
+    @required this.isSelecting,
+  }) : super(key: key);
 
-  final bool _isSelecting;
+  final bool isSelecting;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: !_isSelecting ? null : NeverScrollableScrollPhysics(),
+      physics: !isSelecting ? null : NeverScrollableScrollPhysics(),
       padding: EdgeInsets.only(top: 25),
       children: <Widget>[
         Image.asset(
