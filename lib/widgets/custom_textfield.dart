@@ -8,12 +8,14 @@ class CustomTextField extends StatelessWidget {
     @required this.label,
     this.password = false,
     this.keyboardType,
+    this.focusNode,
   }) : super(key: key);
 
   final String placeholder;
   final String label;
   final bool password;
   final TextInputType keyboardType;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class CustomTextField extends StatelessWidget {
             ),
             obscureText: this.password,
             keyboardType: this.keyboardType,
+            focusNode: this.focusNode,
           ),
         ],
       ),

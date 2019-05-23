@@ -12,10 +12,7 @@ class AddTransactionScreen extends StatefulWidget {
 
 class _AddTransactionScreenState extends State<AddTransactionScreen> {
   TransactionTypes transactionType;
-
-  final _pageController = PageController(
-    initialPage: 0,
-  );
+  List<Widget> pages = [];
 
   void _onTransactionTypePressed(TransactionTypes selectedType) {
     _pageController.animateToPage(
@@ -31,6 +28,24 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    this.pages = [
+      new TransactionType(
+        onTransactionTypePressed: this._onTransactionTypePressed,
+      ),
+      new TransactionDetails(
+        transactionType: this.transactionType,
+      ),
+    ];
+  }
+
+  final _pageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
@@ -44,19 +59,13 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: PageView(
+                child: PageView.builder(
                   physics: transactionType == null
                       ? NeverScrollableScrollPhysics()
                       : null,
                   controller: _pageController,
-                  children: <Widget>[
-                    new TransactionType(
-                      onTransactionTypePressed: _onTransactionTypePressed,
-                    ),
-                    TransactionDetails(
-                      transactionType: this.transactionType,
-                    ),
-                  ],
+                  itemBuilder: (_, ndx) => pages[ndx],
+                  itemCount: pages.length,
                 ),
               ),
             )
@@ -81,7 +90,7 @@ class _AppBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: Icon(Icons.clear),
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).pop(),
           ),
           Text(
             'Add Transaction',

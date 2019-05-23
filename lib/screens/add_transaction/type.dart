@@ -12,8 +12,8 @@ class TransactionType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
+      // crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(height: 50),
         Container(

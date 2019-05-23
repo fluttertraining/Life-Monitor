@@ -13,7 +13,7 @@ class DailyTransactionsScreen extends StatefulWidget {
 class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
   DateTime _currentDate;
   int _day;
-  bool isSelecting = false;
+  bool _isSelecting = false;
 
   void _onDayPressed(DateTime date, _) {
     this.setState(() {
