@@ -14,7 +14,6 @@ class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
   DateTime _currentDate;
   int _day;
   bool _isSelecting = false;
-  bool keepAlive = true;
 
   void _onDayPressed(DateTime date, _) {
     this.setState(() {
@@ -28,12 +27,6 @@ class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
     this.setState(() {
       _isSelecting = !_isSelecting;
     });
-  }
-
-  @override
-  void dispose() {
-    print('disposed?');
-    super.dispose();
   }
 
   @override
@@ -67,10 +60,11 @@ class _DailyTransactionsScreenState extends State<DailyTransactionsScreen> {
           RoundedAppBar(
             padding: EdgeInsets.symmetric(horizontal: 10),
             isAnimated: true,
-            height:
-                _isSelecting ? MediaQuery.of(context).size.height * .60 : 120,
+            height: _isSelecting ? 400 : 120,
             child: CalendarCarousel(
               onDayPressed: _onDayPressed,
+              isScrollable: false,
+              height: _isSelecting ? 450 : 120,
               onHeaderTitlePressed: _onHeaderTitlePressed,
               weekendTextStyle: TextStyle(
                 color: Colors.black,
